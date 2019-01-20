@@ -1,4 +1,4 @@
-# morcert-app
+# vue-docker-basic-app
 
 ## Develop
 
@@ -9,18 +9,18 @@
 > build image
 
 ```powershell
->cd /motcert-app/
->./cmd/build-image-dev.sh # build dev image (motcert/platform-app-dev-env:0.0.1)
+>cd /vue-docker-basic-app/
+>./cmd/build-image-dev.sh # build dev image (basic/platform-app-dev-env:0.0.1)
 ```
 
 ##### Run Container
 ```powershell
->./cmd/local-start.sh # run container with name (`motcert.platform-app.dev`)
+>./cmd/local-start.sh # run container with name (`basic.platform-app.dev`)
 ```
 
 ##### Remove Container
 ```powershell
->./cmd/clean.sh # remove container with name (`motcert.platform-app.dev`)
+>./cmd/clean.sh # remove container with name (`basic.platform-app.dev`)
 ```
 
 ## Deploy
@@ -33,6 +33,6 @@
 
 |       -     | Images                      | container         |
 | ----------- | --------------------------- | ----------------- |
-| development | motcert/platform-app-dev-env:0.0.1 | `motcert.platform-app.dev` `9999:80` |
-| production  | motcert/platform-app:0.0.1         |        none      |
+| development | basic/platform-app-dev-env:0.0.1 | `basic.platform-app.dev` `9999:80` |
+| production  | basic/platform-app:0.0.1         |        none      |
 
