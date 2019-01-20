@@ -1,29 +1,38 @@
-# motcert-app
+# morcert-app
 
-## Project setup
-```
-npm install
-```
+## Develop
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## RUN
 
-### Compiles and minifies for production
-```
-npm run build
+##### Image
+
+> build image
+
+```powershell
+>cd /motcert-app/
+>./cmd/build-image-dev.sh # build dev image (motcert/platform-app-dev-env:0.0.1)
 ```
 
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
+##### Run Container
+```powershell
+>./cmd/local-start.sh # run container with name (`motcert.platform-app.dev`)
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+##### Remove Container
+```powershell
+>./cmd/clean.sh # remove container with name (`motcert.platform-app.dev`)
+```
+
+## Deploy
+
+...
+
+
+
+## Docker Index
+
+|       -     | Images                      | container         |
+| ----------- | --------------------------- | ----------------- |
+| development | motcert/platform-app-dev-env:0.0.1 | `motcert.platform-app.dev` `9999:80` |
+| production  | motcert/platform-app:0.0.1         |        none      |
+

@@ -1,0 +1,16 @@
+FROM alpine:3.8 as build
+
+COPY ./Docker/.npmrc /root/
+COPY ./Docker/.yarnrc /root/
+
+RUN \
+  apk add nodejs npm nginx --no-cache --repository http://mirrors.ustc.edu.cn/alpine/edge/main && \
+  apk add yarn --no-cache --repository http://mirrors.ustc.edu.cn/alpine/edge/community && \
+  yarn global add @vue/cli && \
+  mkdir /code && \
+  echo 'Finished.'
+
+WORKDIR /code
+
+ENTRYPOINT ["/bin/sh"]
+

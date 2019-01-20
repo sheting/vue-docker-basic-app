@@ -1,0 +1,26 @@
+ARG BASE_TAG
+
+FROM motcert/platform-app-build-env:$BASE_TAG as builder-app
+
+COPY . /code
+
+RUN cd /code && \
+  rm -rf ./dist && \
+  yarn && \
+  yarn run build && \
+  ls -l | grep -q -E "\s+dist$"
+
+FROM alpine:3.8
+
+RUN \
+  apk add nginx bash --no-cache --repository http://mirrors.ustc.edu.cn/alpine/edge/main \
+  && mkdir /code \
+  && mkdir -p /run/nginx
+
+COPY --from=builder-app /code/dist /code/
+COPY ./Docker/nginx-prod/nginx.conf /etc/nginx/nginx.conf
+COPY ./Docker/nginx-prod/mime.types /etc/nginx/mime.types
+
+WORKDIR /code
+ENTRYPOINT ["/bin/sh"]
+EXPOSE 80

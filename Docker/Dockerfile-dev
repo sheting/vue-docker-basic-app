@@ -1,0 +1,18 @@
+FROM alpine:3.8 as dev
+
+COPY ./Docker/.npmrc /root/
+COPY ./Docker/.yarnrc /root/
+COPY ./Docker/nginx/nginx.conf /etc/nginx/nginx.conf
+
+RUN \
+  apk add nodejs npm nginx --no-cache --repository http://mirrors.ustc.edu.cn/alpine/edge/main && \
+  apk add yarn --no-cache --repository http://mirrors.ustc.edu.cn/alpine/edge/community && \
+  yarn global add @vue/cli && \
+  mkdir /code && \
+  echo 'Basic env Finished.'
+
+WORKDIR /code
+
+ENTRYPOINT ["/bin/sh"]
+
+EXPOSE 80 9999 9998 8000
