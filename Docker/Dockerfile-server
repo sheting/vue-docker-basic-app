@@ -1,6 +1,6 @@
 ARG BASE_TAG
 
-FROM motcert/platform-app-build-env:$BASE_TAG as builder-app
+FROM basic/platform-app-build-env:$BASE_TAG as builder-app
 
 COPY . /code
 
